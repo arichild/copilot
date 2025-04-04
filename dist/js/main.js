@@ -1,96 +1,85 @@
 $( document ).ready(function() {
-  // popup
-  $(document).on("click", ".mfp-link", function () {
-    var a = $(this);
-
-    $.magnificPopup.open({
-      items: { src: a.attr("data-href") },
-      type: "ajax",
-      overflowY: "scroll",
-      removalDelay: 300,
-      mainClass: 'my-mfp-zoom-in',
-      ajax: {
-        tError: "Error. Not valid url",
-      },
-      callbacks: {
-        open: function () {
-          setTimeout(function(){
-            $('.mfp-wrap').addClass('not_delay');
-            $('.mfp-popup').addClass('not_delay');
-          },700);
-        }
-      },
-
-      callbacks: {
-        open: function() {
-          document.documentElement.style.overflow = 'hidden'
-        },
-
-        close: function() {
-          document.documentElement.style.overflow = ''
-        }
-      }
-    });
-    return false;
+  AOS.init({
+    startEvent: 'DOMContentLoaded',
+    duration: 800,
+    offset: 120,
+    delay: 50,
+    once: false,
+    easing: 'ease-out',
+    disable: 'mobile'
   });
 
+  const accordionBtn = document.querySelectorAll('.faq-accordion-head')
 
+  accordionBtn.forEach(item => {
+    item.addEventListener('click', function() {
+      const parent = item.closest('.faq-accordion')
+      const accordionBody = parent.querySelector('.faq-accordion-body')
+      const accordionHead= parent.querySelector('.faq-accordion-head')
 
-  // validate
-  $.validator.messages.required = 'Пожалуйста, введите данные';
-
-  jQuery.validator.addMethod("lettersonly", function(value, element) {
-    return this.optional(element) || /^([а-яё ]+|[a-z ]+)$/i.test(value);
-  }, "Поле может состоять из букв и пробелов, без цифр");
-
-  jQuery.validator.addMethod("phone", function (value, element) {
-    if (value.startsWith('+375')) {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){12}(\s*)?$/i.test(value);
-    } else if (value.startsWith('+7')) {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$/i.test(value);
-    } else {
-      return /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11,14}(\s*)?$/i.test(value);
-    }
-  }, "Введите полный номер");
-
-
-
-  // imask
-  let phone = document.querySelectorAll('.phone-mask')
-
-  if(phone.length) {
-    phone.forEach(element => {
-      IMask(element, {
-        mask: [
-          {
-            mask: '+{375} (00) 000 00 00',
-            startsWith: '375',
-            overwrite: true,
-            lazy: false,
-            placeholderChar: '_',
-          },
-          {
-            mask: '+{7} (000) 000 00 00',
-            startsWith: '7',
-            overwrite: true,
-            lazy: false,
-            placeholderChar: '_',
-          },
-          {
-            mask: '+0000000000000',
-            startsWith: '',
-            country: 'unknown'
-          }
-        ],
-
-        dispatch: function (appended, dynamicMasked) {
-          var number = (dynamicMasked.value + appended).replace(/\D/g, '');
-
-          return dynamicMasked.compiledMasks.find(function (m) {
-            return number.indexOf(m.startsWith) === 0;
-          });
-        }
-      })
-    });
-  }
+      accordionBody.classList.toggle('active')
+      accordionHead.classList.toggle('active')
+    })
+  })
 });
+
+function setupVideoPlayer() {
+  const playPauseButton = document.querySelectorAll('.play');
+  const icon1 = document.querySelector('.icon-1');
+  const icon2 = document.querySelector('.icon-2');
+  const icon3 = document.querySelector('.icon-3');
+  const icon4 = document.querySelector('.icon-4');
+
+  playPauseButton.forEach(item => {
+    item.addEventListener('click', () => {
+      const parent = item.closest('.video-player')
+      const video = parent.querySelector('video')
+
+      console.log(video)
+      if (video.paused) {
+        video.play();
+
+        item.style.visibility = "hidden"
+
+        item.style.opacity = "0"
+
+        if(icon1 || icon2 || icon3 || icon4) {
+          icon1.classList.add('active')
+          icon2.classList.add('active')
+          icon3.classList.add('active')
+          icon4.classList.add('active')
+        }
+      } else {
+        video.pause();
+
+        item.style.opacity = "1"
+
+        item.style.visibility = "visible"
+
+        if(icon1 || icon2 || icon3 || icon4) {
+          icon1.classList.remove('active')
+          icon2.classList.remove('active')
+          icon3.classList.remove('active')
+          icon4.classList.remove('active')
+        }
+      }
+
+      video.addEventListener('ended',function(){
+        video.load();
+
+        item.style.opacity = "1"
+
+        item.style.visibility = "visible"
+
+        if(icon1 || icon2 || icon3 || icon4) {
+          icon1.classList.remove('active')
+          icon2.classList.remove('active')
+          icon3.classList.remove('active')
+          icon4.classList.remove('active')
+        }
+      },false);
+    });
+  })
+}
+
+setupVideoPlayer()

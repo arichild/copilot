@@ -23,6 +23,24 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background: linear-gradient(360deg, #fff 0%, #ffe8d9 100%);
+  background-attachment: fixed;
+  scrollbar-width: thin;          /* Firefox */
+  scrollbar-color: #A8A8A8 transparent; /* Firefox: ползунок и трек */
+
+  &::-webkit-scrollbar {
+    width: 4px; /* Ширина вертикального скроллбара */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent; /* Цвет фона */
+  }
+
+  /* Ползунок скроллбара */
+  &::-webkit-scrollbar-thumb {
+    background: #A8A8A8; /* Цвет ползунка */
+    border-radius: 10px; /* Закругление углов */
+  }
 }
 
 body {
@@ -33,9 +51,9 @@ body {
   font-family: $baseFont;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 1.42;
+  line-height: 1.4;
   color: #000;
-  background-color: #fff;
+  // background-color: #fff;
 }
 
 #wrapper {
@@ -65,4 +83,9 @@ body {
   max-width: $widthContainer;
   padding-left: $paddingContainer;
   padding-right: $paddingContainer;
+
+  // @media(max-width: 1024.99px) {
+  //   padding-left: 20px;
+  //   padding-right: 20px;
+  // }
 }

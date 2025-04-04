@@ -1,3 +1,108 @@
 .footer {
+  padding: 60px 0;
+  color: #505050;
+  background-color: #fff;
 
+  .cookie {
+    color: #505050;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    margin-right: 32px;
+  }
+
+  &-logo {
+    line-height: 0;
+    margin-bottom: 32px;
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  @media(max-width: 1440.99px) {
+    padding: 35px 0;
+
+    &-logo {
+      margin-bottom: 30px;
+    }
+
+    .cookie {
+      margin-right: 30px;
+    }
+  }
+
+  @media(max-width: 1280.99px) {
+    padding: 30px 0;
+
+    &-logo {
+      margin-bottom: 25px;
+    }
+
+    .cookie {
+      margin-right: 25px;
+    }
+  }
+
+  @media(max-width: 1024.99px) {
+    padding: 25px 0;
+    padding-bottom: 20px;
+
+    &-logo {
+      margin-bottom: 20px;
+      max-width: 130px;
+    }
+
+    .cookie {
+      margin-right: 20px;
+    }
+
+    &-bottom {
+      flex-wrap: wrap;
+    }
+
+    &-coopyright {
+      margin-right: 10px;
+      text-wrap: balance;
+      margin-bottom: 5px;
+    }
+  }
+
+  @media(max-width: 768.99px) {
+    padding: 20px 0;
+
+    &-logo {
+      margin-bottom: 15px;
+      max-width: 120px;
+    }
+
+    .cookie {
+      margin-right: 15px;
+    }
+  }
+
+  @media(max-width: 576.99px) {
+    font-size: 14px;
+
+    &-logo {
+      margin-bottom: 10px;
+      max-width: 110px;
+    }
+
+    .cookie {
+      margin-right: 0;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    &-other {
+      order: -1;
+      margin-bottom: 5px;
+    }
+  }
+
+  @media(max-width: 480.99px) {
+
+  }
 }
