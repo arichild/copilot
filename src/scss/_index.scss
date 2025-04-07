@@ -380,19 +380,26 @@
     scrollbar-width: thin;
     scrollbar-color: #A8A8A8 transparent;
 
-    &::-webkit-scrollbar {
-      width: 4px; /* Ширина вертикального скроллбара */
+    .simplebar-scrollbar::before {
+      background-color: #A8A8A8;
+      width: 4px;
+      opacity: 1;
+      border-radius: 10px;
     }
 
-    &::-webkit-scrollbar-track {
-      background: transparent; /* Цвет фона */
-    }
+    // &::-webkit-scrollbar {
+    //   width: 4px; /* Ширина вертикального скроллбара */
+    // }
 
-    /* Ползунок скроллбара */
-    &::-webkit-scrollbar-thumb {
-      background: #A8A8A8; /* Цвет ползунка */
-      border-radius: 10px; /* Закругление углов */
-    }
+    // &::-webkit-scrollbar-track {
+    //   background: transparent; /* Цвет фона */
+    // }
+
+    // /* Ползунок скроллбара */
+    // &::-webkit-scrollbar-thumb {
+    //   background: #A8A8A8; /* Цвет ползунка */
+    //   border-radius: 10px; /* Закругление углов */
+    // }
   }
 
   &-item {
@@ -521,6 +528,7 @@
     width: 100%;
     position: relative;
     transform-style: preserve-3d;
+    display: block;
 
     img {
       position: absolute;

@@ -9,6 +9,8 @@ $( document ).ready(function() {
     disable: 'mobile'
   });
 
+  new SimpleBar(document.querySelector('.tutorial-list'));
+
   const accordionBtn = document.querySelectorAll('.faq-accordion-head')
 
   accordionBtn.forEach(item => {
