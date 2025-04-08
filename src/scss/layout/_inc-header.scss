@@ -2,6 +2,20 @@
   padding: 50px 0;
   // margin-bottom: 140px;
 
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-logos {
+    max-width: calc(100% - 36px);
+    flex: 0 0 calc(100% - 36px);
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+
   &-logo {
     &-link {
       margin-right: 60px;
@@ -12,6 +26,21 @@
         margin-right: 0;
       }
     }
+  }
+
+  &-lang {
+    border-radius: 100%;
+    background: linear-gradient(271deg, transparent 30%, rgba(247, 74, 157, .4) 70%);
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: block;
+    text-align: center;
+    line-height: 36px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
   }
 
   @media(max-width: 1440.99px) {
@@ -40,7 +69,7 @@
     &-logo {
       &-link {
         margin-right: 30px;
-        max-width: 120px;
+        max-width: 145px;
       }
     }
   }
@@ -48,28 +77,51 @@
   @media(max-width: 768.99px) {
     padding: 20px 0;
 
-    &-logo {
-      &-link {
-        margin-right: 20px;
-        max-width: 110px;
-      }
-    }
+    // &-logo {
+    //   &-link {
+    //     // margin-right: 20px;
+    //     // max-width: 110px;
+    //   }
+    // }
   }
 
   @media(max-width: 576.99px) {
+    &-content {
+      align-items: flex-start;
+    }
+
+    &-lang {
+      position: relative;
+      top: -5px;
+    }
+
+
     &-logo {
-      &-link {
-        max-width: 100px;
+      &-container {
+        width: calc(100% + 36px);
+        text-align: center;
+      }
+      // &-link {
+      //   // max-width: 100px;
+      // }
+    }
+
+    &-logos {
+      flex-direction: column;
+      align-items: flex-start;
+
+      &> .header-logo-link {
+        margin-bottom: 62px;
       }
     }
   }
 
-  @media(max-width: 480.99px) {
-    &-logo {
-      &-link {
-        max-width: 86px;
-        margin-right: 12px;
-      }
-    }
-  }
+  // @media(max-width: 480.99px) {
+  //   &-logo {
+  //     &-link {
+  //       // max-width: 86px;
+  //       // margin-right: 12px;
+  //     }
+  //   }
+  // }
 }

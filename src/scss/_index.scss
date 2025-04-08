@@ -7,6 +7,8 @@
     font-weight: 600;
     margin-bottom: 32px;
     text-wrap: balance;
+    margin-top: 0;
+    line-height: 1.4;
   }
 
   &-info {
@@ -40,32 +42,58 @@
     &-block {
       position: relative;
 
-      &:hover {
-        .main-video-play {
-          opacity: 1 !important;
-          visibility: visible !important;
-        }
+      // &:active {
+      //   .main-video-play {
+      //     opacity: 1;
+      //     visibility: visible;
+      //   }
 
-        .icon-1 {
-          transform: translate(-30px,-60px);
-        }
+      //   .icon-1 {
+      //     transform: translate(-30px,-60px);
+      //   }
 
-        .icon-2 {
-          transform: translate(70px, -50%);
-        }
+      //   .icon-2 {
+      //     transform: translate(70px, -50%);
+      //   }
 
-        .icon-3 {
-          transform: translate(-60px, 0);
-        }
+      //   .icon-3 {
+      //     transform: translate(-60px, 0);
+      //   }
 
-        .icon-4 {
-          transform: translate(20px, 30px);
+      //   .icon-4 {
+      //     transform: translate(20px, 30px);
+      //   }
+      // }
+
+      @media(min-width: 1024.99px) {
+        &:hover {
+          .main-video-play {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .icon-1 {
+            transform: translate(-30px,-60px);
+          }
+
+          .icon-2 {
+            transform: translate(70px, -50%);
+          }
+
+          .icon-3 {
+            transform: translate(-60px, 0);
+          }
+
+          .icon-4 {
+            transform: translate(20px, 30px);
+          }
         }
       }
 
       video {
         object-fit: cover;
         border-radius: 12px;
+        height: 100%;
       }
 
       &::after {
@@ -168,7 +196,7 @@
 
     &-play {
       background: transparent;
-      width: 305px;
+      width: auto;
       height: 100%;
       position: absolute;
       left: 50%;
@@ -337,16 +365,20 @@
       position: relative;
       line-height: 0;
 
-      &:hover {
-        .tutorial-video-play {
-          opacity: 1 !important;
-          visibility: visible !important;
+      @media(min-width: 1024.99px) {
+        &:hover {
+          .tutorial-video-play {
+            opacity: 1 !important;
+            visibility: visible !important;
+          }
         }
       }
+
 
       video {
         object-fit: cover;
         border-radius: 12px;
+        height: 100%;
       }
     }
 
@@ -359,7 +391,7 @@
 
     &-play {
       background: transparent;
-      width: 365px;
+      width: auto;
       height: 100%;
       position: absolute;
       left: 50%;
@@ -647,6 +679,8 @@
     font-weight: 600;
     font-size: 40px;
     margin-bottom: 70px;
+    margin-top: 0;
+    line-height: 1.4;
   }
 
   &-image {
@@ -748,7 +782,28 @@
   }
 }
 
+.cookie {
+  padding: 80px 0;
+
+  &-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    text-wrap: balance;
+    margin-top: 0;
+    line-height: 1.4;
+  }
+}
+
 @media(max-width: 1440.99px) {
+  .cookie {
+    &-title {
+      font-size: 35px;
+      margin-bottom: 30px;
+    }
+  }
+
   .main {
     padding-top: 135px;
     padding-bottom: 170px;
@@ -774,9 +829,9 @@
 
     &-video {
       &-block {
-        video {
-          height: 400px;
-        }
+        // video {
+        //   height: 400px;
+        // }
 
         &:hover {
           .icon-1 {
@@ -825,9 +880,9 @@
         }
       }
 
-      &-play {
-        width: 290px;
-      }
+      // &-play {
+      //   width: 290px;
+      // }
     }
   }
 
@@ -966,14 +1021,21 @@
         font-size: 25px;
       }
 
-      &-play {
-        width: 290px;
-      }
+      // &-play {
+      //   width: 290px;
+      // }
     }
   }
 }
 
 @media(max-width: 1280.99px) {
+  .cookie {
+    &-title {
+      font-size: 32px;
+      margin-bottom: 28px;
+    }
+  }
+
   .main {
     padding-top: 120px;
     padding-bottom: 150px;
@@ -1006,9 +1068,9 @@
 
     &-video {
       &-block {
-        video {
-          height: 380px;
-        }
+        // video {
+        //   height: 380px;
+        // }
 
         .bg-2 {
           display: none;
@@ -1071,9 +1133,9 @@
         }
       }
 
-      &-play {
-        width: 280px;
-      }
+      // &-play {
+      //   width: 280px;
+      // }
     }
   }
 
@@ -1231,14 +1293,21 @@
         font-size: 22px;
       }
 
-      &-play {
-        width: 280px;
-      }
+      // &-play {
+      //   width: 280px;
+      // }
     }
   }
 }
 
 @media(max-width: 1024.99px) {
+  .cookie {
+    &-title {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+  }
+
   .main {
     padding-top: 55px;
     padding-bottom: 80px;
@@ -1265,9 +1334,9 @@
 
     &-link {
       margin: 0 auto;
-      height: 42px;
-      line-height: 42px;
-      max-width: 230px;
+      height: 44px;
+      line-height: 44px;
+      max-width: 218px;
     }
 
     &-video {
@@ -1275,9 +1344,9 @@
         max-width: 750px;
         margin: 0 auto;
 
-        video {
-          height: 350px;
-        }
+        // video {
+        //   height: 350px;
+        // }
 
 
         &:hover {
@@ -1345,9 +1414,9 @@
         }
       }
 
-      &-play {
-        width: 250px;
-      }
+      // &-play {
+      //   width: 250px;
+      // }
     }
   }
 
@@ -1539,9 +1608,9 @@
         margin: 0 auto;
         margin-bottom: 40px;
 
-        video {
-          height: 350px;
-        }
+        // video {
+        //   height: 350px;
+        // }
       }
 
       &-block {
@@ -1552,14 +1621,23 @@
         font-size: 20px;
       }
 
-      &-play {
-        width: 250px;
-      }
+      // &-play {
+      //   width: 250px;
+      // }
     }
   }
 }
 
 @media(max-width: 768.99px) {
+  .cookie {
+    padding-top: 40px;
+    padding-bottom: 60px;
+
+    &-title {
+      font-size: 25px;
+    }
+  }
+
   .main {
     padding-top: 40px;
     padding-bottom: 60px;
@@ -1583,9 +1661,9 @@
     &-video {
       &-block {
         max-width: 700px;
-        video {
-          height: 320px;
-        }
+        // video {
+        //   height: 320px;
+        // }
 
 
         &:hover {
@@ -1648,9 +1726,9 @@
         }
       }
 
-      &-play {
-        width: 220px;
-      }
+      // &-play {
+      //   width: 220px;
+      // }
     }
   }
 
@@ -1802,9 +1880,9 @@
         margin: 0 auto;
         margin-bottom: 40px;
 
-        video {
-          height: 320px;
-        }
+        // video {
+        //   height: 320px;
+        // }
       }
 
       &-block {
@@ -1815,14 +1893,24 @@
         font-size: 18px;
       }
 
-      &-play {
-        width: 220px;
-      }
+      // &-play {
+      //   width: 220px;
+      // }
     }
   }
 }
 
 @media(max-width: 576.99px) {
+  .cookie {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    &-title {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+  }
+
   .main {
     padding-top: 20px;
     padding-bottom: 40px;
@@ -1839,9 +1927,9 @@
 
     &-link {
       font-size: 14px;
-      max-width: 210px;
-      height: 40px;
-      line-height: 40px;
+      // max-width: 210px;
+      // height: 40px;
+      // line-height: 40px;
     }
 
     &-info {
@@ -1853,17 +1941,11 @@
       }
     }
 
-    &-link {
-      height: 42px;
-      line-height: 42px;
-      max-width: 230px;
-    }
-
     &-video {
       &-block {
-        video {
-          height: 320px;
-        }
+        // video {
+        //   height: 320px;
+        // }
 
 
         &:hover {
@@ -1926,9 +2008,9 @@
         }
       }
 
-      &-play {
-        width: 220px;
-      }
+      // &-play {
+      //   width: 220px;
+      // }
     }
   }
 
@@ -2048,9 +2130,9 @@
 
 @media(max-width: 480.99px) {
   .main {
-    &-title {
-      font-size: 20px;
-    }
+    // &-title {
+    //   font-size: 20px;
+    // }
 
     &-info {
       p {
@@ -2060,9 +2142,9 @@
 
     &-video {
       &-block {
-        video {
-          height: 300px;
-        }
+        // video {
+        //   height: 300px;
+        // }
 
         .icon-1 {
           display: none;
@@ -2081,9 +2163,9 @@
         }
       }
 
-      &-play {
-        width: 200px;
-      }
+      // &-play {
+      //   width: 200px;
+      // }
     }
   }
 
@@ -2145,9 +2227,9 @@
   .tutorial {
     &-video {
       &-content {
-        video {
-          height: 300px;
-        }
+        // video {
+        //   height: 300px;
+        // }
       }
     }
   }
@@ -2160,4 +2242,31 @@
   color: transparent;
   font-weight: bold;
   display: inline-block;
+}
+
+.play {
+  visibility: visible;
+  opacity: 1;
+
+  .play-img {
+    display: block;
+  }
+
+  .stop-img {
+    display: none;
+  }
+
+  &.active {
+    visibility: hidden;
+    opacity: 0;
+
+    .play-img {
+      display: none;
+    }
+
+
+  .stop-img {
+    display: block;
+  }
+  }
 }

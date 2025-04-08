@@ -1,7 +1,10 @@
 .footer {
   padding: 60px 0;
   color: #505050;
-  background-color: #fff;
+
+  &.white {
+    background-color: #fff;
+  }
 
   .cookie {
     color: #505050;

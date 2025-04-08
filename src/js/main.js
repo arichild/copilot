@@ -27,61 +27,75 @@ $( document ).ready(function() {
 
 function setupVideoPlayer() {
   const playPauseButton = document.querySelectorAll('.play');
+  const videoPlayers = document.querySelectorAll('.video-player');
   const icon1 = document.querySelector('.icon-1');
   const icon2 = document.querySelector('.icon-2');
   const icon3 = document.querySelector('.icon-3');
   const icon4 = document.querySelector('.icon-4');
 
-  playPauseButton.forEach(item => {
-    item.addEventListener('click', () => {
-      const parent = item.closest('.video-player')
-      const video = parent.querySelector('video')
+  if (window.innerWidth > 1024) {
+    // Обработчик для разрешений больше 1024px
+    playPauseButton.forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.closest('.video-player');
+        const video = parent.querySelector('video');
 
-      console.log(video)
-      if (video.paused) {
-        video.play();
+        if (video.paused) {
+          video.play();
 
-        item.style.visibility = "hidden"
+          item.classList.add('active');
 
-        item.style.opacity = "0"
+          if (icon1 || icon2 || icon3 || icon4) {
+            icon1.classList.add('active');
+            icon2.classList.add('active');
+            icon3.classList.add('active');
+            icon4.classList.add('active');
+          }
+        } else {
+          video.pause();
 
-        if(icon1 || icon2 || icon3 || icon4) {
-          icon1.classList.add('active')
-          icon2.classList.add('active')
-          icon3.classList.add('active')
-          icon4.classList.add('active')
+          item.classList.remove('active');
+
+          if (icon1 || icon2 || icon3 || icon4) {
+            icon1.classList.remove('active');
+            icon2.classList.remove('active');
+            icon3.classList.remove('active');
+            icon4.classList.remove('active');
+          }
         }
-      } else {
-        video.pause();
 
-        item.style.opacity = "1"
+        video.addEventListener('ended', () => {
+          video.load();
 
-        item.style.visibility = "visible"
+          item.classList.remove('active');
 
-        if(icon1 || icon2 || icon3 || icon4) {
-          icon1.classList.remove('active')
-          icon2.classList.remove('active')
-          icon3.classList.remove('active')
-          icon4.classList.remove('active')
-        }
-      }
-
-      video.addEventListener('ended',function(){
-        video.load();
-
-        item.style.opacity = "1"
-
-        item.style.visibility = "visible"
-
-        if(icon1 || icon2 || icon3 || icon4) {
-          icon1.classList.remove('active')
-          icon2.classList.remove('active')
-          icon3.classList.remove('active')
-          icon4.classList.remove('active')
-        }
-      },false);
+          if (icon1 || icon2 || icon3 || icon4) {
+            icon1.classList.remove('active');
+            icon2.classList.remove('active');
+            icon3.classList.remove('active');
+            icon4.classList.remove('active');
+          }
+        }, false);
+      });
     });
-  })
+  } else {
+    // Обработчик для разрешений меньше 1024px
+    videoPlayers.forEach(item => {
+      item.addEventListener('touchend', () => {
+        const btn = item.querySelector('.play');
+        const video = item.querySelector('video');
+
+        if (btn.classList.contains('active')) {
+          btn.classList.remove('active');
+          video.pause();
+        } else {
+          btn.classList.add('active');
+          video.play();
+        }
+      });
+    });
+  }
+
 }
 
 setupVideoPlayer()
