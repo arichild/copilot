@@ -67,7 +67,7 @@
 
       @media(min-width: 1024.99px) {
         &:hover {
-          .main-video-play {
+          .play {
             opacity: 1;
             visibility: visible;
           }
@@ -87,6 +87,11 @@
           .icon-4 {
             transform: translate(20px, 30px);
           }
+
+          // video::-webkit-media-controls-panel {
+          //   visibility: visible !important;
+          //   opacity: 1 !important;
+          // }
         }
       }
 
@@ -367,10 +372,15 @@
 
       @media(min-width: 1024.99px) {
         &:hover {
-          .tutorial-video-play {
+          .play {
             opacity: 1 !important;
             visibility: visible !important;
           }
+
+          // video::-webkit-media-controls-panel {
+          //   visibility: visible !important;
+          //   opacity: 1 !important;
+          // }
         }
       }
 
@@ -2248,25 +2258,45 @@
   visibility: visible;
   opacity: 1;
 
-  .play-img {
-    display: block;
-  }
-
-  .stop-img {
-    display: none;
-  }
-
   &.active {
     visibility: hidden;
     opacity: 0;
-
-    .play-img {
-      display: none;
-    }
-
-
-  .stop-img {
-    display: block;
+    display: none !important;
   }
+
+  @media(max-width: 1024.99px) {
+    &.mobile {
+      pointer-events: none !important;
+      z-index: 0;
+
+      img {
+        pointer-events: none !important;
+        z-index: 0;
+      }
+    }
   }
 }
+
+.rewind-block {
+  visibility: hidden;
+  opacity: 0;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// video::-webkit-media-controls-play-button,
+// video::-webkit-media-controls-pause-button {
+//   display: none;
+// }
+
+// video::-webkit-media-controls-panel {
+//   visibility: hidden !important;
+//   opacity: 0 !important;
+// }
+
+// video::-webkit-media-controls-panel  {
+//   display: none !important;
+// }

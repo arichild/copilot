@@ -33,69 +33,111 @@ function setupVideoPlayer() {
   const icon3 = document.querySelector('.icon-3');
   const icon4 = document.querySelector('.icon-4');
 
-  if (window.innerWidth > 1024) {
-    // Обработчик для разрешений больше 1024px
-    playPauseButton.forEach(item => {
-      item.addEventListener('click', () => {
-        const parent = item.closest('.video-player');
-        const video = parent.querySelector('video');
 
+  if (window.innerWidth > 1024) {
+    videoPlayers.forEach(item => {
+      const video = item.querySelector('video');
+
+      video.addEventListener('play', () => {
+        const btn = item.querySelector('.play')
+        btn.classList.add('active')
+
+        video.setAttribute("controls","controls")
+
+        if (icon1) icon1.classList.add('active');
+        if (icon2) icon2.classList.add('active');
+        if (icon3) icon3.classList.add('active');
+        if (icon4) icon4.classList.add('active');
+      });
+      video.addEventListener('pause', () => {
+        const btn = item.querySelector('.play')
+        btn.classList.remove('active')
+
+        video.removeAttribute("controls")
+
+        if (icon1) icon1.classList.remove('active');
+        if (icon2) icon2.classList.remove('active');
+        if (icon3) icon3.classList.remove('active');
+        if (icon4) icon4.classList.remove('active');
+      });
+    });
+
+    playPauseButton.forEach(item => {
+      const parent = item.closest('.video-player');
+      const video = parent.querySelector('video');
+
+      item.addEventListener('click', () => {
         if (video.paused) {
           video.play();
+          video.setAttribute("controls","controls")
 
           item.classList.add('active');
 
-          if (icon1 || icon2 || icon3 || icon4) {
-            icon1.classList.add('active');
-            icon2.classList.add('active');
-            icon3.classList.add('active');
-            icon4.classList.add('active');
-          }
+          if (icon1) icon1.classList.add('active');
+          if (icon2) icon2.classList.add('active');
+          if (icon3) icon3.classList.add('active');
+          if (icon4) icon4.classList.add('active');
         } else {
           video.pause();
+          video.removeAttribute("controls")
 
           item.classList.remove('active');
 
-          if (icon1 || icon2 || icon3 || icon4) {
-            icon1.classList.remove('active');
-            icon2.classList.remove('active');
-            icon3.classList.remove('active');
-            icon4.classList.remove('active');
-          }
+          if (icon1) icon1.classList.remove('active');
+          if (icon2) icon2.classList.remove('active');
+          if (icon3) icon3.classList.remove('active');
+          if (icon4) icon4.classList.remove('active');
         }
 
         video.addEventListener('ended', () => {
           video.load();
+          video.removeAttribute("controls")
 
           item.classList.remove('active');
 
-          if (icon1 || icon2 || icon3 || icon4) {
-            icon1.classList.remove('active');
-            icon2.classList.remove('active');
-            icon3.classList.remove('active');
-            icon4.classList.remove('active');
-          }
+          if (icon1) icon1.classList.remove('active');
+          if (icon2) icon2.classList.remove('active');
+          if (icon3) icon3.classList.remove('active');
+          if (icon4) icon4.classList.remove('active');
         }, false);
       });
     });
   } else {
-    // Обработчик для разрешений меньше 1024px
     videoPlayers.forEach(item => {
-      item.addEventListener('touchend', () => {
-        const btn = item.querySelector('.play');
-        const video = item.querySelector('video');
+      const btn = item.querySelector('.play');
+      const video = item.querySelector('video');
 
-        if (btn.classList.contains('active')) {
-          btn.classList.remove('active');
-          video.pause();
-        } else {
-          btn.classList.add('active');
+      // Добавляем обработчики событий только один раз
+      video.addEventListener('play', () => {
+        btn.classList.add('active');
+        video.setAttribute("controls", "controls");
+
+        if (icon1) icon1.classList.add('active');
+        if (icon2) icon2.classList.add('active');
+        if (icon3) icon3.classList.add('active');
+        if (icon4) icon4.classList.add('active');
+      });
+
+      video.addEventListener('pause', () => {
+        btn.classList.remove('active');
+        video.removeAttribute("controls");
+
+        if (icon1) icon1.classList.remove('active');
+        if (icon2) icon2.classList.remove('active');
+        if (icon3) icon3.classList.remove('active');
+        if (icon4) icon4.classList.remove('active');
+      });
+
+      item.addEventListener('click', () => {
+        // Включаем/выключаем видео по состоянию
+        if (video.paused) {
           video.play();
+        } else {
+          video.pause();
         }
       });
     });
   }
-
 }
 
 setupVideoPlayer()
